@@ -1,12 +1,16 @@
 let express = require("express")
 let cors = require("cors")
-require("dtoenv").config()
-let path = require("path")
+require("dotenv").config()
+
 
 let app = express()
 
 app.use(express.json())
 app.use(cors())
+
+let {home} = require("./controllers/pageCtrl.js")
+
+app.get("/", home)
 
 let { PORT } = process.env
 
